@@ -58,7 +58,7 @@ class ExceptionResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return (bool) config('filament-exceptions.navigation_enabled');
+        return (bool) auth()->user()->isSuperAdmin() && config('filament-exceptions.navigation_enabled');
     }
 
     public static function getNavigationSort(): ?int
